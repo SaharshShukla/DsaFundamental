@@ -1,60 +1,45 @@
 
 public class Qst1 {
 
+	static final int MAX_CHAR = 26;
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		int[]num= {-1,0,3,5,9,12};
-		int start=0;
-		int target=2;
-		int end=num.length-1;
-		 
-		 while(start<=end) {
-			 int mid=start+(end-start)/2;
-			 
-			 
-			 if(target==num[mid]){
-				 System.out.println("index is "+mid);
-				 break;
-			 }
-			 else if(target<num[mid]){
-				 end=mid-1;//we will se left side of an array
-				 
-				 if(target!=num[mid]) {//to check if element is not found
-					 System.out.println(" target not found  so -1 is return");
-				 }
-			 }
-			 else {//we will se right side of an array
-				 start=mid+1;
-			 } 
-		 }
+		sortString("javafordatastructureandalgorithm");
+		
+		
+	}
+
 	
+	static void sortString(String str) {
 		 
+        // Hash array to keep count of characters.
+        int letters[] = new int[MAX_CHAR];
+ 
+        // Traverse string and increment count of characters
+        for (char x : str.toCharArray()) {
+            letters[x - 'a']++;
+        }
+ 
+        // Traverse the hash array and printcharacters
+        for (int i = 0; i < MAX_CHAR; i++) {
+            for (int j = 0; j < letters[i]; j++) {
+                System.out.print((char) (i + 'a'));
+            }
+        }
 	}
 }
-	
-
 
 /*
-qts1)Given an array of integers nums which is sorted in ascending order, and an integer target,
-write a function to search target in nums. If target exists, then return its index. 
-Otherwise, return -1.
-
-You must write an algorithm with O(log n) runtime complexity.
-
+ *
+30/12/2021
+"1. Sort the string composed of only [a-z] chars in descending order in Linear Time. 
+        
+       
+        
  
-
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-Example 2:
-
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
-
-*/
-
+ * 
+ * 
+ * 
+ */

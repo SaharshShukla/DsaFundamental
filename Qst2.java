@@ -1,50 +1,55 @@
-import java.util.Scanner;
+
 public class Qst2 {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-Scanner sc=new Scanner(System.in);
-System.out.print("Enter number for square root: ");
-int n=sc.nextInt();
-		int start=0;
-		int end=n;
-		while(start+1<end) {
-			int mid=start+(end-start)/2;
-			
-			if(mid*mid==n){//if num lie b/w o to mid square
-				System.out.println("Square root of number is "+mid);
-				break;
-			}else if(mid*mid<n){
-				start=mid;
-			}else {
-				end=mid;
-				
-			}
-			if(end*end==n){//if number is at end
-				System.out.println("Square root of number is "+end);
-			}else {//if number is at start
-				System.out.println("Square root of number is "+start);
-			}
+		String str="JavaForDataStructureAndAlgorithm";
+		
+		int [] lowerCase=new int[26];
+		int [] upperCase=new int[26];
+		
+		for(int i=0;i<str.length();i++)
+		{
+			if (Character.isLowerCase(str.charAt(i)))//checking char as lower case
+				lowerCase[str.charAt(i)-'a']++;
+			else if (Character.isUpperCase(str.charAt(i)))//checking char as upper case
+				upperCase[str.charAt(i)-'A']++;
 		}
 		
 		
-			
-			}
+		int i = 0, j = 0;
+		char str1[]=str.toCharArray();//conerting string into char array
+		
+		while (i < 26 && lowerCase[i] == 0)
+		    i++;
 
+		while (j < 26 && upperCase[j] == 0)
+		    j++;
+		for (int k=0;k<str.length();k++)
+		{
+		    if (Character.isLowerCase(str.charAt(k)))
+		    {
+		        while (lowerCase[i] == 0)
+		            i++;
+		        str1[k]=(char) (i + 'a');
+		        lowerCase[i]--;
+		    } 
+		    else if (Character.isUpperCase(str.charAt(k)))
+		    {
+		        while (upperCase[j] == 0)
+		            j++;
+		        str1[k]=(char) (j + 'A');
+		        upperCase[j]--;
+		    }
 		}
-		/*
-		qst2)Given a non-negative integer x, compute and return the square root of x.
+		for(int a=0;a<str1.length;a++)
+		{
+		System.out.print(str1[a]);
+		}
+	}
 
-		Since the return type is an integer, the decimal digits are truncated, 
-		and only the integer part of the result is returned.
+}
 
-		Note: You are not allowed to use any built-in exponent 
-		function or operator, such as pow(x, 0.5) or x ** 0.5.
-
-		 
-
-		Example 1:
-
-		Input: x = 4
-		Output: 2
-		*/
+/*
+2. Sort the string composed of only [a-z,A-Z] chars in ascending order in linear Time.
+*/

@@ -1,30 +1,29 @@
 
 public class Qst3 {
 
+	 public static int power(int base, int powerRaised) {
+		    if (powerRaised != 0) {
+
+		      // recursive call to power()
+		      return (base * power(base, powerRaised - 1));
+		    }
+		    else {
+		      return 1;
+		    }
+		  }
+	 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {1,1,2,2,4,5,5,6,6,6,6,9,10,11};
-	int target = 6;
-	int count=0;
-    for(int i=0;i<arr.length;i++)
-    {
-      if(arr[i]==target)
-      {
-          count++;
-      }
-    }
-    if(count>0)
-    {
-      System.out.println("Frequency of the selected element is :"+count);
-    }
-    else
-    {
-      System.out.println("Element not present in the array");
-    }
+		int base = 2, powerRaised = 5;
+	    int result = power(base, powerRaised);
+
+	    System.out.println(base + "^" + powerRaised + "=" + result);
 
 	}
 
 }
-/*qst3)Find the frequency of an element in a sorted array with
- *  duplicates present. for eg: [1,1,2,2,4,5,5,6,6,6,6,9,10,11] and target = 6 
- */	
+
+/*
+ * 3. Write a recursive code to find the x^y . example: 2^5 = 32. 
+ * 
+ */
