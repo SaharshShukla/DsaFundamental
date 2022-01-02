@@ -1,4 +1,4 @@
-//no output
+
 public class Qst3 {
 
 	public static void main(String[] args) {
