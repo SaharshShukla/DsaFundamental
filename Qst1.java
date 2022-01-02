@@ -1,60 +1,41 @@
 
 public class Qst1 {
 
+	public static int Maxi(int a[], int n)
+    {
+      if(n == 1)
+        return a[0];
+         
+        return Math.max(a[n-1], Maxi(a, n-1));//math function to calutale maximum
+    }
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		
+	 int[] arr ={1,-1,0,2,-2,3,-3,4,-4};
+	 int n = arr.length;
+     System.out.println("Maximum element is "+Maxi(arr, n));
+     System.out.println("Minimum element is "+Mini(arr, n));
 
-		int[]num= {-1,0,3,5,9,12};
-		int start=0;
-		int target=2;
-		int end=num.length-1;
-		 
-		 while(start<=end) {
-			 int mid=start+(end-start)/2;
-			 
-			 
-			 if(target==num[mid]){
-				 System.out.println("index is "+mid);
-				 break;
-			 }
-			 else if(target<num[mid]){
-				 end=mid-1;//we will se left side of an array
-				 
-				 if(target!=num[mid]) {//to check if element is not found
-					 System.out.println(" target not found  so -1 is return");
-				 }
-			 }
-			 else {//we will se right side of an array
-				 start=mid+1;
-			 } 
-		 }
-	
-		 
 	}
-}
 	
+	public static int Mini(int a[], int n)
+    {
+      if(n == 1)
+        return a[0];
+         
+        return Math.min(a[n-1], Mini(a, n-1));//math function to calutale minimum
+    }
 
-
+}
 /*
-qts1)Given an array of integers nums which is sorted in ascending order, and an integer target,
-write a function to search target in nums. If target exists, then return its index. 
-Otherwise, return -1.
+"1.Write a recursive code for finding the max 
+and min element in the given array arr ={1,-1,0,2,-2,3,-3,4,-4}
+        NOTE: pass arr in every function call.
 
-You must write an algorithm with O(log n) runtime complexity.
 
- 
+     
 
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-Example 2:
-
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
 
 */
-
