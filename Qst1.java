@@ -1,60 +1,35 @@
-
+import java.util.*;
 public class Qst1 {
+	
+	public static void reverseNumber(int number){  
+	
+	if (number < 10){  
+	//prints the same number if the number is less than 10  
+	System.out.println(number);  
+	return;
+	}else{  
+	System.out.print(number % 10);  
+	reverseNumber(number/10);  
+	} 
+	
+	}  
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		
+		System.out.print("Enter the number that you want to reverse: ");  
+		Scanner sc = new Scanner(System.in);  
+		int num = sc.nextInt();  
+		System.out.print("The reverse of the given number is: ");  
+		//method calling  
+		reverseNumber(num);
 
-		int[]num= {-1,0,3,5,9,12};
-		int start=0;
-		int target=2;
-		int end=num.length-1;
-		 
-		 while(start<=end) {
-			 int mid=start+(end-start)/2;
-			 
-			 
-			 if(target==num[mid]){
-				 System.out.println("index is "+mid);
-				 break;
-			 }
-			 else if(target<num[mid]){
-				 end=mid-1;//we will se left side of an array
-				 
-				 if(target!=num[mid]) {//to check if element is not found
-					 System.out.println(" target not found  so -1 is return");
-				 }
-			 }
-			 else {//we will se right side of an array
-				 start=mid+1;
-			 } 
-		 }
-	
-		 
 	}
+
 }
-	
-
-
 /*
-qts1)Given an array of integers nums which is sorted in ascending order, and an integer target,
-write a function to search target in nums. If target exists, then return its index. 
-Otherwise, return -1.
+"1.Reverse a number using a recursive program.
+      
 
-You must write an algorithm with O(log n) runtime complexity.
-
- 
-
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-Example 2:
-
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
 
 */
-
