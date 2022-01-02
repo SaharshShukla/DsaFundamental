@@ -11,7 +11,7 @@ public class Qst3 {
 		
 	}
 	
-	private static void displayEvenNumbers(int number){   
+	public static void displayEvenNumbers(int number){   
 		
 	if(number>=2)   
 	return;   
