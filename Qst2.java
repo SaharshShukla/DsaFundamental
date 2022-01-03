@@ -1,50 +1,67 @@
-import java.util.Scanner;
+ class Quick  
+{  
+      
+    int partition (int a[], int start, int end){ 
+	
+
+    int pivot = a[end]; // pivot element  
+    int i = (start - 1);  
+  
+    for (int j = start; j <= end - 1; j++){  
+        // If current element is smaller than the pivot  
+        if (a[j] < pivot){  
+            i++; // increment index of smaller element  
+            int t = a[i];  
+            a[i] = a[j];  
+            a[j] = t;  
+        }  
+    } 
+    
+    int t = a[i+1];  
+    a[i+1] = a[end];  
+    a[end] = t;  
+    return (i + 1);  
+}  
+  
+   /* function to implement quick sort */  
+    void quick(int a[], int start, int end){  
+    	
+   /* a[] = array to be sorted, 
+    * start = Starting index, end = Ending index */
+    if (start < end){  
+        int p = partition(a, start, end);  //p is partitioning index  
+        quick(a, start, p - 1);  
+        quick(a, p + 1, end);  
+    }  
+}  
+  
+/* function to print an array */  
+    void printArr(int a[], int n){  
+    	
+    
+    int i;  
+    for (i = 0; i < n; i++) {  
+        System.out.print(a[i] + " "); } 
+     } 
+}
+    
 public class Qst2 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-Scanner sc=new Scanner(System.in);
-System.out.print("Enter number for square root: ");
-int n=sc.nextInt();
-		int start=0;
-		int end=n;
-		while(start+1<end) {
-			int mid=start+(end-start)/2;
-			
-			if(mid*mid==n){//if num lie b/w o to mid square
-				System.out.println("Square root of number is "+mid);
-				break;
-			}else if(mid*mid<n){
-				start=mid;
-			}else {
-				end=mid;
-				
-			}
-			if(end*end==n){//if number is at end
-				System.out.println("Square root of number is "+end);
-			}else {//if number is at start
-				System.out.println("Square root of number is "+start);
-			}
-		}
+	
+	public static void main(String[] args) { 
 		
-		
-			
-			}
-
-		}
-		/*
-		qst2)Given a non-negative integer x, compute and return the square root of x.
-
-		Since the return type is an integer, the decimal digits are truncated, 
-		and only the integer part of the result is returned.
-
-		Note: You are not allowed to use any built-in exponent 
-		function or operator, such as pow(x, 0.5) or x ** 0.5.
-
-		 
-
-		Example 1:
-
-		Input: x = 4
-		Output: 2
-		*/
+	    int a[] = { 13, 18, 27, 2, 19, 25 };  
+	    int leng = a.length;  
+	    
+	    System.out.println("\nBefore sorting array elements are - ");  
+	    Quick q1 = new Quick();  
+	    q1.printArr(a, leng);  
+	    q1.quick(a, 0, leng - 1);  
+	    System.out.println("\nAfter sorting array elements are - ");  
+	    q1.printArr(a, leng);  
+	    System.out.println(); 
+	    
+	    
+	    }  
+}
+/*
+2. Quick sort (code)"*/
