@@ -1,67 +1,91 @@
- class Quick  
-{  
-      
-    int partition (int a[], int start, int end){ 
-	
-
-    int pivot = a[end]; // pivot element  
-    int i = (start - 1);  
+class MergeSOrt {  
   
-    for (int j = start; j <= end - 1; j++){  
-        // If current element is smaller than the pivot  
-        if (a[j] < pivot){  
-            i++; // increment index of smaller element  
-            int t = a[i];  
-            a[i] = a[j];  
-            a[j] = t;  
-        }  
+/* Function to merge the subarrays of a[] */  
+    void merge(char a[], int start, int mid, int end){ 
+    	
+    
+        int i, j, k;  
+        int n1 = mid - start + 1;    
+        int n2 = end - mid;    
+      
+        /* temporary Arrays */  
+        int LeftArray[] = new int[n1];  
+        int RightArray[] = new int[n2];  
+      
+      /* copy data to temp arrays */  
+     for (i = 0; i < n1; i++)    
+     LeftArray[i] = a[start + i];    
+     for (j = 0; j < n2; j++)    
+     RightArray[j] = a[mid + 1 + j];    
+      
+    i = 0; //initial index of first sub-array  
+    j = 0; //initial index of second sub-array   
+    k = start;//initial index of merged sub-array  
+      
+    while (i < n1 && j < n2){
+    	
+   
+        if(LeftArray[i] <= RightArray[j]){    
+            a[k] = (char) LeftArray[i];    
+            i++;    
+        }else{    
+            a[k] = (char) RightArray[j];    
+            j++;    
+        }    
+        k++;    
     } 
     
-    int t = a[i+1];  
-    a[i+1] = a[end];  
-    a[end] = t;  
-    return (i + 1);  
-}  
+    while (i<n1){    
+        a[k] = (char) LeftArray[i];    
+        i++;    
+        k++;    
+    }    
+      
+    
+    while (j<n2){    
+        a[k] = (char) RightArray[j];    
+        j++;    
+        k++;    
+    }    
+}    
   
-   /* function to implement quick sort */  
-    void quick(int a[], int start, int end){  
+    void mergeSort(char a[], int start, int end){
     	
-   /* a[] = array to be sorted, 
-    * start = Starting index, end = Ending index */
+    
     if (start < end){  
-        int p = partition(a, start, end);  //p is partitioning index  
-        quick(a, start, p - 1);  
-        quick(a, p + 1, end);  
+        int mid = (start + end) / 2;  
+        mergeSort(a, start, mid);  
+        mergeSort(a, mid + 1, end);  
+        merge(a, start, mid, end);  
     }  
 }  
   
-/* function to print an array */  
-    void printArr(int a[], int n){  
+/* Function to print the array */  
+    void printArray(char a[], int n){
     	
     
     int i;  
-    for (i = 0; i < n; i++) {  
-        System.out.print(a[i] + " "); } 
-     } 
+    for (i = 0; i < n; i++) { 
+        System.out.print(a[i] + " ");}
+} 
 }
-    
 public class Qst2 {
-	
-	public static void main(String[] args) { 
-		
-	    int a[] = { 13, 18, 27, 2, 19, 25 };  
-	    int leng = a.length;  
-	    
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		char[] array = {'a','x','y','b','A','T','t'};
+		int leng = array.length;  
+	    MergeSOrt m1 = new MergeSOrt();  
 	    System.out.println("\nBefore sorting array elements are - ");  
-	    Quick q1 = new Quick();  
-	    q1.printArr(a, leng);  
-	    q1.quick(a, 0, leng - 1);  
+	    m1.printArray(array, leng);  
+	    m1.mergeSort(array, 0, leng - 1);  
 	    System.out.println("\nAfter sorting array elements are - ");  
-	    q1.printArr(a, leng);  
-	    System.out.println(); 
-	    
-	    
-	    }  
+	    m1.printArray(array, leng);  
+	    System.out.println("");  
+		
+
+	}
+
 }
-/*
-2. Quick sort (code)"*/
+/*2 .Implement a Merge sort to sort the input array of chars in descending order..
+arr = {'a','x','y','b','A','T','t'};*/
