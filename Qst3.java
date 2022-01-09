@@ -1,30 +1,40 @@
-
+import java.util.*;
 public class Qst3 {
+	static String adjacentString(String str1){
+	
+	Stack<Character> st =new Stack<Character>();
+	int i = 0;// Store the index of str
 
+	
+	while (i < str1.length()){
+		if (st.isEmpty() ||str1.charAt(i) != st.peek()){
+		st.add(str1.charAt(i));
+		i++;
+		}else{// If top element of the stack is equal to the current character
+		st.pop();
+		i++;
+		}
+	}
+
+	
+	if (st.isEmpty()){
+		return ("Empty String");
+	}else{// If stack is not Empty
+		String short_String = "";
+		while (!st.isEmpty()){
+		short_String = st.peek()+short_String;
+		st.pop();
+		}
+		return (short_String);
+	}
+	}
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int arr[] = {1,1,2,2,4,5,5,6,6,6,6,9,10,11};
-	int target = 6;
-	int count=0;
-    for(int i=0;i<arr.length;i++)
-    {
-      if(arr[i]==target)
-      {
-          count++;
-      }
-    }
-    if(count>0)
-    {
-      System.out.println("Frequency of the selected element is :"+count);
-    }
-    else
-    {
-      System.out.println("Element not present in the array");
-    }
-
+		String str1 ="azzxzy";
+		System.out.print("Adjacent string is: "+adjacentString(str1));
 	}
 
 }
-/*qst3)Find the frequency of an element in a sorted array with
- *  duplicates present. for eg: [1,1,2,2,4,5,5,6,6,6,6,9,10,11] and target = 6 
- */	
+/*
+3. Remove adjacent chars in a string.
+*/

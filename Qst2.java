@@ -1,50 +1,27 @@
-import java.util.Scanner;
+import java.util.*;
 public class Qst2 {
-
+	
+	static boolean valid(String s) {
+		
+        Stack<Character> stack = new Stack<>();
+        for(int i = 0; i < s.length(); i++) {
+            char a = s.charAt(i);
+            if(a == '(' || a == '[' || a == '{') stack.push(a);
+            else if(stack.empty()) return false;
+            else if(a == ')' && stack.pop() != '(') return false;
+            else if(a == ']' && stack.pop() != '[') return false;
+            else if(a == '}' && stack.pop() != '{') return false;
+        }
+        return stack.empty();
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-Scanner sc=new Scanner(System.in);
-System.out.print("Enter number for square root: ");
-int n=sc.nextInt();
-		int start=0;
-		int end=n;
-		while(start+1<end) {
-			int mid=start+(end-start)/2;
-			
-			if(mid*mid==n){//if num lie b/w o to mid square
-				System.out.println("Square root of number is "+mid);
-				break;
-			}else if(mid*mid<n){
-				start=mid;
-			}else {
-				end=mid;
-				
-			}
-			if(end*end==n){//if number is at end
-				System.out.println("Square root of number is "+end);
-			}else {//if number is at start
-				System.out.println("Square root of number is "+start);
-			}
-		}
-		
-		
-			
-			}
+		String s  = "()(())){{}}[{}]";
+        System.out.println("Is parenthess valid: "+valid(s));
+	}
 
-		}
-		/*
-		qst2)Given a non-negative integer x, compute and return the square root of x.
-
-		Since the return type is an integer, the decimal digits are truncated, 
-		and only the integer part of the result is returned.
-
-		Note: You are not allowed to use any built-in exponent 
-		function or operator, such as pow(x, 0.5) or x ** 0.5.
-
-		 
-
-		Example 1:
-
-		Input: x = 4
-		Output: 2
-		*/
+}
+/*
+2. https://leetcode.com/problems/valid-parentheses/
+*/
