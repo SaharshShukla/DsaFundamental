@@ -1,30 +1,28 @@
-
 public class Qst3 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int arr[] = {1,1,2,2,4,5,5,6,6,6,6,9,10,11};
-	int target = 6;
-	int count=0;
-    for(int i=0;i<arr.length;i++)
-    {
-      if(arr[i]==target)
-      {
-          count++;
-      }
-    }
-    if(count>0)
-    {
-      System.out.println("Frequency of the selected element is :"+count);
-    }
-    else
-    {
-      System.out.println("Element not present in the array");
-    }
-
-	}
+	
 
 }
-/*qst3)Find the frequency of an element in a sorted array with
- *  duplicates present. for eg: [1,1,2,2,4,5,5,6,6,6,6,9,10,11] and target = 6 
- */	
+/*https://leetcode.com/problems/intersection-of-two-linked-lists/
+ * public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA==null||headB==null)
+            return null;
+        ListNode a_pointer=headA;
+        ListNode b_pointer=headB;
+        
+        while(a_pointer!=b_pointer){
+            if(a_pointer==null){
+                a_pointer=headB;
+            }else{
+                a_pointer=a_pointer.next;
+            }
+            if(b_pointer==null){
+                b_pointer=headA;
+            }else{
+                b_pointer=b_pointer.next;
+            }
+        }
+        return  a_pointer;
+    }
+}
+ */
