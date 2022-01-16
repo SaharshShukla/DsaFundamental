@@ -1,30 +1,35 @@
-
 public class Qst3 {
+    static class Node{
+        Node left;
+        Node right;
+        int data;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int arr[] = {1,1,2,2,4,5,5,6,6,6,6,9,10,11};
-	int target = 6;
-	int count=0;
-    for(int i=0;i<arr.length;i++)
-    {
-      if(arr[i]==target)
-      {
-          count++;
-      }
-    }
-    if(count>0)
-    {
-      System.out.println("Frequency of the selected element is :"+count);
-    }
-    else
-    {
-      System.out.println("Element not present in the array");
+        public Node(int data) {
+            this.left = null;
+            this.right = null;
+            this.data = data;
+        }
     }
 
-	}
+    public int countNode(Node root){
+        if(root==null)
+            return 0;
+        return 1 + countNode(root.left) + countNode(root.right);
+    }
 
+    public static void main(String[] args) {
+        Qst3 c = new Qst3();
+        Node root = new Node(1);
+        root.left = new Node(2);
+        root.right = new Node(3);
+        root.left.left = new Node(4);
+        root.left.right = new Node(5);
+
+        System.out.println("Number of nodes in given binary tree: " + c.countNode(root));
+    }
 }
-/*qst3)Find the frequency of an element in a sorted array with
- *  duplicates present. for eg: [1,1,2,2,4,5,5,6,6,6,6,9,10,11] and target = 6 
- */	
+
+/*"Implement binary Tree class and insert few numbers into it and 
+ * perform the following :
+3. Get the count of nodes in a Binary tree.
+"*/

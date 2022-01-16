@@ -1,50 +1,55 @@
-import java.util.Scanner;
-public class Qst2 {
+import java.util.*;
+public class Qst2{    
+    public static class Node{  
+        int data;  
+        Node left;  
+        Node right;  
+  
+        public Node(int data){   
+            this.data = data;  
+            this.left = null;  
+            this.right = null;  
+        }  
+    }    
+    public Node root;  
+    public Qst2(){  
+        root = null;  
+    }  
+  
+     
+    public int findHeight(Node tenpVar){  
+        if(root == null) {  
+             System.out.println("Tree is empty");  
+            return 0;  
+        }  
+        else {  
+            int leftHeight = 0, rightHeight = 0;    
+            if(tenpVar.left != null)  
+                leftHeight = findHeight(tenpVar.left);  
+            if(tenpVar.right != null)  
+                rightHeight = findHeight(tenpVar.right);  
+            int max = (leftHeight > rightHeight) ? leftHeight : rightHeight; 
+            return (max + 1);  
+        }  
+     }  
+  
+    public static void main(String[] args) {  
+  
+        Qst2 bt = new Qst2();  
+        //Add nodes to the binary tree  
+        bt.root = new Node(1);  
+        bt.root.left = new Node(2);  
+        bt.root.right = new Node(3);  
+        bt.root.left.left = new Node(4);  
+        bt.root.right.left = new Node(5);  
+        bt.root.right.right = new Node(6);  
+        bt.root.right.right.right= new Node(7);  
+        bt.root.right.right.right.right = new Node(8);   
+        System.out.println("Maximum height of given binary tree: " + bt.findHeight(bt.root));  
+  }  
+}  
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-Scanner sc=new Scanner(System.in);
-System.out.print("Enter number for square root: ");
-int n=sc.nextInt();
-		int start=0;
-		int end=n;
-		while(start+1<end) {
-			int mid=start+(end-start)/2;
-			
-			if(mid*mid==n){//if num lie b/w o to mid square
-				System.out.println("Square root of number is "+mid);
-				break;
-			}else if(mid*mid<n){
-				start=mid;
-			}else {
-				end=mid;
-				
-			}
-			if(end*end==n){//if number is at end
-				System.out.println("Square root of number is "+end);
-			}else {//if number is at start
-				System.out.println("Square root of number is "+start);
-			}
-		}
-		
-		
-			
-			}
-
-		}
-		/*
-		qst2)Given a non-negative integer x, compute and return the square root of x.
-
-		Since the return type is an integer, the decimal digits are truncated, 
-		and only the integer part of the result is returned.
-
-		Note: You are not allowed to use any built-in exponent 
-		function or operator, such as pow(x, 0.5) or x ** 0.5.
-
-		 
-
-		Example 1:
-
-		Input: x = 4
-		Output: 2
-		*/
+/*"Implement binary Tree class and insert few numbers into it and 
+ * perform the following :
+2. Finding height of a tree. 
+"*/

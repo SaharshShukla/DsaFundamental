@@ -1,60 +1,101 @@
-
-public class Qst1 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		int[]num= {-1,0,3,5,9,12};
-		int start=0;
-		int target=2;
-		int end=num.length-1;
-		 
-		 while(start<=end) {
-			 int mid=start+(end-start)/2;
-			 
-			 
-			 if(target==num[mid]){
-				 System.out.println("index is "+mid);
-				 break;
-			 }
-			 else if(target<num[mid]){
-				 end=mid-1;//we will se left side of an array
-				 
-				 if(target!=num[mid]) {//to check if element is not found
-					 System.out.println(" target not found  so -1 is return");
-				 }
-			 }
-			 else {//we will se right side of an array
-				 start=mid+1;
-			 } 
-		 }
-	
-		 
-	}
-}
-	
-
-
-/*
-qts1)Given an array of integers nums which is sorted in ascending order, and an integer target,
-write a function to search target in nums. If target exists, then return its index. 
-Otherwise, return -1.
-
-You must write an algorithm with O(log n) runtime complexity.
-
- 
-
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-Example 2:
-
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
-
-*/
-
+import java.util.*;
+public class Qst1 {   
+	  private Node root;  
+	  Qst1(){  
+	    root = null;  
+	  }    
+	  static class Node{  
+	    int data;  
+	    Node left;  
+	    Node right;  
+	    Node(int value){  
+	      this.data = value;  
+	      left = null;  
+	      right = null;          
+	    }  
+	    public void displayData()  
+	    {  
+	      System.out.print(data + " ");  
+	    }  
+	  }  
+	      
+	  public void insert(int i){  
+	    root = insert(root, i);  
+	  }  
+	   
+	  public Node insert(Node node, int value){  
+	    if(node == null){  
+	      return new Node(value);  
+	    }  
+	    
+	    if(value < node.data)  
+	    {  
+	      node.left = insert(node.left, value);  
+	    }  
+	      
+	    else if(value > node.data)  
+	    {  
+	      node.right = insert(node.right, value);  
+	    }  
+	    return node;  
+	  }  
+	   
+	  public Node find(int searchedValue){  
+	    Node current = root;  
+	    while(current.data != searchedValue){  
+	      if(searchedValue < current.data)  
+	        current = current.left;  
+	      else    
+	        current = current.right;  
+	      if(current == null){  
+	        return null;  
+	      }  
+	    }  
+	    return current;  
+	  }  
+	   
+	  public void inOrder(Node node){  
+	    if(node != null){  
+	      inOrder(node.left);  
+	      node.displayData();  
+	      inOrder(node.right);  
+	    }  
+	  }  
+	   
+	  public void preOrder(Node node){  
+	    if(node != null){  
+	      node.displayData();  
+	      preOrder(node.left);             
+	      preOrder(node.right);  
+	    }  
+	  }  
+	  
+	  public void postOrder(Node node){  
+	    if(node != null){  
+	      postOrder(node.left);  
+	      postOrder(node.right);  
+	      node.displayData();            
+	    }  
+	  }  
+	  public static void main(String[] args){  
+	    Qst1 bst = new Qst1();  
+	    bst.insert(34);  
+	    bst.insert(56);  
+	    bst.insert(12);  
+	    bst.insert(89);  
+	    bst.insert(67);  
+	    bst.insert(90);  
+	    System.out.println("Inorder traversal of binary tree");  
+	    bst.inOrder(bst.root);  
+	    System.out.println();  
+	    System.out.println("Preorder traversal of binary tree");  
+	    bst.preOrder(bst.root);  
+	    System.out.println();  
+	    System.out.println("Postorder traversal of binary tree");  
+	    bst.postOrder(bst.root);  
+	    System.out.println();  
+	  }  
+	}  
+/*"Implement binary Tree class and insert few numbers into it and perform the following :
+1. Inorder , pre-order and post order traversal using recursion. 
+"*/
