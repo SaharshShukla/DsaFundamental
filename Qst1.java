@@ -1,60 +1,76 @@
+import java.util.*;
 
-public class Qst1 {
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-		int[]num= {-1,0,3,5,9,12};
-		int start=0;
-		int target=2;
-		int end=num.length-1;
-		 
-		 while(start<=end) {
-			 int mid=start+(end-start)/2;
-			 
-			 
-			 if(target==num[mid]){
-				 System.out.println("index is "+mid);
-				 break;
-			 }
-			 else if(target<num[mid]){
-				 end=mid-1;//we will se left side of an array
-				 
-				 if(target!=num[mid]) {//to check if element is not found
-					 System.out.println(" target not found  so -1 is return");
-				 }
-			 }
-			 else {//we will se right side of an array
-				 start=mid+1;
-			 } 
-		 }
-	
-		 
-	}
+class Qst1{
+static class node {
+	int data;
+	node left;
+	node right;
 }
-	
+
+static node newNode(int data){
+	node temp = new node();
+	temp.data = data;
+	temp.left = null;
+	temp.right = null;
+	return temp;
+}
+
+static void nodesAtKthLevel(node root,int k){
+
+	if (root == null)
+		return;
+	Queue<node> q = new LinkedList<node>();
+	q.add(root);
+	HashSet<Integer> s = new HashSet<Integer>();
+	int lvl = 0;
+	int flag = 0;
+     while (!q.isEmpty()) {
+		int size = q.size();
+		while (size-- > 0) {
+			node ptr = q.peek();
+			q.remove();
+			if (lvl == k){
+				flag = 1;
+				s.add(ptr.data);
+			}
+			else {
+				if (ptr.left!=null)
+					q.add(ptr.left);
+
+				
+				if (ptr.right!=null)
+					q.add(ptr.right);
+			}
+		}
+
+		
+		lvl++;
+		if (flag == 1)
+			break;
+	}
+	for (int it : s) {
+		System.out.print(it+ " ");
+	}
+	System.out.println();
+}
+
+    public static void main(String[] args){
+	node root = new node();
+	root = newNode(60);
+	root.left = newNode(20);
+	root.right = newNode(30);
+	root.left.left = newNode(80);
+	root.left.right = newNode(10);
+	root.right.left = newNode(40);
+	int level = 1;
+	nodesAtKthLevel(root, level);
+
+    }
+}
+
 
 
 /*
-qts1)Given an array of integers nums which is sorted in ascending order, and an integer target,
-write a function to search target in nums. If target exists, then return its index. 
-Otherwise, return -1.
-
-You must write an algorithm with O(log n) runtime complexity.
-
- 
-
-Example 1:
-
-Input: nums = [-1,0,3,5,9,12], target = 9
-Output: 4
-Explanation: 9 exists in nums and its index is 4
-
-Example 2:
-
-Input: nums = [-1,0,3,5,9,12], target = 2
-Output: -1
-Explanation: 2 does not exist in nums so return -1
+1. PrintKthLevel nodes only for a binary tree.
 
 */
-
